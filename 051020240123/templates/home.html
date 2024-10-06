@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пароль расписания</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        // Функция для скрытия сообщения через 3 секунды
+        function hideMessage() {
+            const message = document.getElementById('error-message');
+            if (message) {
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Запуск функции при загрузке страницы
+        window.onload = hideMessage;
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Индивидуальное расписание</h1>
+    <h3>Чтобы создать новое расписание, придумайте любой пароль. Главное - его запомнить.</h3>
+
+    <!-- Форма для создания расписания -->
+    <form action="/create_schedule" method="POST">
+        <input type="text" name="new_password" placeholder="Новый пароль" required maxlength="152">
+        <button type="submit">Создать расписание</button>
+    </form>
+
+
+    {% if error %}
+    <div id="error-message" style="color: red;">{{ error }}</div>
+    {% endif %}
+
+
+    <!-- Форма для просмотра расписания -->
+    <form action="/view_schedule" method="POST">
+        <input type="text" name="password" placeholder="Сохранённый пароль" required maxlength="152">
+        <button type="submit">Открыть расписание</button>
+    </form>
+</div>
+</body>
+</html>

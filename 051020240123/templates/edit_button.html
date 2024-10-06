@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменить кнопку</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Изменить кнопку</h1>
+    <form method="POST">
+        <input type="text" name="when" placeholder="Когда?" maxlength="152" value="{{ button.when }}" required>
+        <input type="text" name="where" placeholder="Где?" maxlength="152" value="{{ button.where }}">
+        <input type="text" name="who" placeholder="Кто?" maxlength="152" value="{{ button.who }}">
+        <button type="submit">Сохранить</button>
+    </form>
+    <button onclick="window.location.href='{{ url_for('edit_schedule', schedule_id=button.schedule_id) }}'">Назад к расписанию</button>
+</div>
+</body>
+</html>

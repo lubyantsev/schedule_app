@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Создать событие</h1>
+    <form method="POST">
+        <input type="text" name="when" placeholder="Когда?" required maxlength="152">
+        <input type="text" name="where" placeholder="Где?" maxlength="152">
+        <input type="text" name="who" placeholder="Кто?" maxlength="152">
+        <button type="submit">Сохранить</button>
+    </form>
+    <h2>События</h2>  <!-- Исправлено здесь -->
+    <div class="buttons-container">
+        {% for button in buttons %}
+        <div class="button" style="background-color: {{ button.color }};">
+            {{ button.when }} {{ button.where }} {{ button.who }}
+            <span>{{ button.name }}</span>
+            <!-- Обернуть кнопки в отдельный контейнер -->
+            <div class="button-controls">
+                <button class="small-button"
+                        onclick="window.location.href='{{ url_for('edit_button', button_id=button.id) }}'">Изменить
+                </button>
+                <form action="{{ url_for('delete_button', button_id=button.id) }}" method="POST"
+                      style="display:inline;">
+                    <button class="small-button" type="submit"
+                            onclick="return confirm('Вы уверены, что хотите удалить эту кнопку?');">Удалить
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <button onclick="window.location.href='{{ url_for('home') }}'">Назад на главную</button>
+    <form action="{{ url_for('delete_schedule', schedule_id=schedule.id) }}" method="POST" style="display:inline;">
+        <button type="submit" onclick="return confirm('Вы уверены, что хотите удалить это расписание?');">Удалить
+            расписание
+        </button>
+    </form>
+</div>
+</body>
+</html>

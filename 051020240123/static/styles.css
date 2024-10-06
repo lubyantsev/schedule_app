@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer; /* Добавляем курсор для кнопок */
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    /* cursor: pointer; */
+    width: auto;
+    min-width: 120px;
+    text-align: center;
+}
+
+.small-button {
+    padding: 0px 2px;  /* Уменьшите отступы, чтобы сделать кнопку меньше */
+    font-size: 16px;    /* Уменьшите размер шрифта */
+    /* border: none;       /* Уберите рамку, если она не нужна */
+    /* border-radius: 3px; /* Добавьте скругление углов */
+    cursor: pointer;    /* Измените курсор на указатель */
+}
